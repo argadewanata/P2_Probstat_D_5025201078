@@ -20,13 +20,18 @@
     
 # ============================ Soal 2 ===================================
   # 2A
-    # Tidak setuju
+    # Setuju
     
   # 2B
     zsum.test(mean.x = 23500,sigma.x = 3900,n.x = 100,
               alternative = "less",mu = 20000)
     
   # 2C
-    # (Penjelasan pada readme.md)
+    # Hipotesis awal (H0) diterima
     
     
+
+
+    
+   
+   
