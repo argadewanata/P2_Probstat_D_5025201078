@@ -187,7 +187,25 @@ Nilai dari T_value adalah 0.41 yang berarti masih berada di antara t_tabel (-4.3
 Kesimpulan  
 
 **Penjelasan**  
-Hipotesis Awal (H0), yaitu "Rata-rata saham di bandung sama dengan rata - rata saham di Bali" diterima  
+Hipotesis Awal (H0), yaitu "Rata-rata saham di bandung sama dengan rata - rata saham di Bali" diterima.  
+
+## SOAL 4  
+Seorang Peneliti sedang meneliti spesies dari kucing di ITS . Dalam penelitiannya ia mengumpulkan data tiga spesies kucing yaitu kucing oren, kucing hitam dan
+kucing putih dengan panjangnya masing-masing. Jika diketahui dataset https://intip.in/datasetprobstat1  
+H0 : Tidak ada perbedaan panjang antara ketiga spesies atau rata-rata panjangnya sama.  
+
+### Soal 4A  
+**Deskripsi Soal**  
+Buatlah masing masing jenis spesies menjadi 3 subjek "Grup" (grup 1,grup 2,grup 3). Lalu Gambarkan plot kuantil normal untuk setiap kelompok dan lihat apakah ada outlier utama dalam homogenitas varians.  
+
+## SOAL 5  
+Data yang digunakan merupakan hasil eksperimen yang dilakukan untuk mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca pelat muka (A, B dan C) pada keluaran cahaya tabung osiloskop. Percobaan dilakukan sebanyak 27 kali dan didapat data sebagai berikut: https://drive.google.com/file/d/1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ/view.
+
+## Soal 5A  
+**Deskripsi Soal**  
+Buatlah plot sederhana untuk visualisasi sederhana!  
+
+
 
 
 
