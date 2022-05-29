@@ -103,9 +103,10 @@ Diketahui perusahaan memiliki seorang data analyst ingin memecahkan permasalahan
 didapatkanlah data berikut dari perusahaan saham tersebut.  
 Nama Kota/Atribut      | Bandung | Bali
 --------------------   | ------- | --
-Jumlah Saham           | 78      | 100
-Sampel Mean            | 75      | 95
-Sampel Stanar Deviasi  | 67      | 70  
+Jumlah Saham           | 19      | 27
+Sampel Mean            | 3.64    | 2.79
+Sampel Standar Deviasi | 1.67    | 1.32  
+  
 Dari data diatas, berilah keputusan serta kesimpulan yang didapatkan dari hasil diatas. Asumsikan nilai variancenya sama, apakah ada perbedaan pada rata-ratanya (α= 0.05)?    
 
 
