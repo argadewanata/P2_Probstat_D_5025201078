@@ -56,6 +56,49 @@ Tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal
 
 **Penjelasan**  
 Pada soal 1B, didapatkan p-value sebesar `6.003e-05` yang mengakibatkan H0 ditolak. Hal tersebut dapat terjadi karena nilai dari p-value < H0. Oleh karena itu, H1 diterima menjadi hipotesis,yaitu:   
-"Terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A"    
+"Terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas A"  
+
+## SOAL 2  
+Diketahui bahwa mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahun. Untuk menguji klaim ini, 100 pemilik mobil yang dipilih secara acak diminta untuk mencatat jarak yang mereka tempuh. Jika sampel acak menunjukkan rata-rata 23.500 kilometer dan standar deviasi 3900 kilometer.  
+
+**Kode Program**  
+```R
+zsum.test(mean.x = 23500,sigma.x = 3900,n.x = 100,
+          alternative = "less",mu = 20000)
+```  
+
+**Penjelasan Kode Program**    
+Untuk menyelesaikan permasalahan ini, dapat digunakan `zsum.test` karena Uji Z dapat digunakan apabila data berdisitribusi normal dan jumlah sampel (n) lebihi dari 30. Penelitian ini menggunakan uji satu arah dengan hipotesis alternatif adalah "mobil rata-rata dikemudikan kurang dari 20.000 kilometer per tahun". Sehingga, digunakan `alternative = less`.  
+
+### Soal 2A  
+**Deksripsi Soal**  
+Apakah anda setuju dengan klaim tersebut?  
+
+**Penjelasan**  
+Setuju  
+
+### Soal 2B  
+**Deskripsi Soal**  
+Jelaskan maksud dari output yang dihasilkan!  
+
+**Screenshot**  
+![2](https://user-images.githubusercontent.com/70679432/170865034-20b3e7aa-d5e1-4630-90f3-9ae760d1e647.jpeg)
+
+**Penjelasan**  
+Berdasarkan output yang dihasilkan, diperoleh nilai Zhitung adalah `8.9744` dan p-value adalah `1`. Selain itu, juga diperolah bahwa selang atas kepercayaan rata rata berada pada nilai `24141.49`.
+
+### Soal 2C  
+**Deskripsi Soal**  
+Buatkan kesimpulan berdasarkan p-value yang dihasilkan!  
+
+**Penjelasan**  
+Nilai dari P adalah `1`  
+P(Z > 8.9744) = 1 - P(Z < 8.977)  
+              = 1 - 1  
+              = 0  
+Oleh karena itu, Hipotesis awal (H0) bahwa "Mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahun" diterima.   
+
+
+
 
 
