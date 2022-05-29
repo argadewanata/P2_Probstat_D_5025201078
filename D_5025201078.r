@@ -49,13 +49,50 @@
     df <- 2
     
     t_tabel <- qt(p=alpha/2,df=df,lower.tail = FALSE)
+    print(t_tabel)
     
   # 3D
     sp <- sqrt(((n1-1)*sd1^2 + (n2-1)*sd2^2)/(df))
+    print(sp)
     T_value <- (mean1-mean2)/(sp*sqrt((1/n1)+(1/n2)))
+    print(T_value)
     
   # 3E
     # Nilai dari T_value adalah 0.41 masih berada di antara t_tabel (-4.303 < T_value < 4.303)
     
   # 3F
     # Hipotesis Awal (H0), yaitu "Rata-rata saham di bandung sama dengan di Bali" diterima
+    
+    
+# ============================ Soal 4 ===================================
+  # 4A
+    DataKucingITS <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"),header = TRUE, check.names = TRUE)
+    byGroup <- split(DataKucingITS, DataKucingITS$Group)
+    grup1 <- byGroup$`1`
+    grup2 <- byGroup$`2`
+    grup3 <- byGroup$`3`
+    
+    qqnorm(grup1$Length,main = "Grup1")
+    qqnorm(grup2$Length,main = "Grup2")
+    qqnorm(grup3$Length,main = "Grup3")
+    
+  # 4B
+    bartlett.test(DataKucingITS$Length, DataKucingITS$Group)
+    
+  # 4C
+    model1 <- lm(DataKucingITS$Length~DataKucingITS$Group)
+    summary(model1)
+    
+  # 4D
+    # Nilai dari P-value adalah 0.6401
+    
+  # 4E
+    av <- aov(Length ~ factor(Group), data = DataKucingITS)
+    TukeyHSD(av) 
+    
+  # 4F
+    library(ggplot2)
+    ggplot(DataKucingITS, aes(x = Group, y = Length)) + 
+           geom_boxplot(fill = "Red", colour = "black")  + 
+           scale_x_discrete() + xlab("Group") + ylab("Length")
+   
