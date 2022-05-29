@@ -290,13 +290,81 @@ Data yang telah didapatkan divisualisasikan dengan bantuan library ggplot2.
 ## SOAL 5  
 Data yang digunakan merupakan hasil eksperimen yang dilakukan untuk mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca pelat muka (A, B dan C) pada keluaran cahaya tabung osiloskop. Percobaan dilakukan sebanyak 27 kali dan didapat data sebagai berikut: https://drive.google.com/file/d/1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ/view.
 
-## Soal 5A  
+### Soal 5A  
 **Deskripsi Soal**  
 Buatlah plot sederhana untuk visualisasi sederhana!  
 
+**Kode Program**  
+```R
+DataGTL <- read_csv("https://drive.google.com/u/0/uc?id=1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ&export=download")
+qplot(x = Temp, y = Light, geom = "jitter", data = DataGTL) +
+      facet_grid(.~Glass, labeller = label_both)
+```
 
+**Penjelasan**  
+File .csv yang terdapat pada link tersebut dibaca dan dimasukkan kedalam variabel DataGTL. Setelah itu, dibuat plot untuk visualisasi dengan fungsi `qplot()`.  
+**Screenshot**  
+![5A](https://user-images.githubusercontent.com/70679432/170879841-fb554efe-e301-48b7-9491-3ea99d307970.jpeg)  
 
+### Soal 5B  
+**Deskripsi Soal**  
+Lakukan uji ANOVA dua arah!  
 
+**Kode Program**  
+```R
+DataGTL$Glass <- as.factor(DataGTL$Glass)
+DataGTL$Temp <- as.factor(DataGTL$Temp)
+    
+anova <- aov(Light ~ Glass*Temp, data = DataGTL)
+summary(anova)
+```
 
+**Penjelasan**  
+Kedua variabel pada DataGTL dipisah lalu dilakukan pengujian ANOVA dua arah.  
 
+**Screenshot**  
+![5B](https://user-images.githubusercontent.com/70679432/170879996-637d0493-664c-417a-a2be-4c06afcf580f.jpeg)  
 
+### Soal 5C  
+**Deskripsi Soal**  
+Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap perlakuan (kombinasi kaca pelat muka dan suhu operasi)!  
+
+**Kode Program**  
+```R
+dataGTL_summary <- group_by(DataGTL, Glass, Temp) %>% summarise(mean=mean(Light), sd=sd(Light)) %>%
+                            arrange(desc(mean))
+```  
+
+**Penjelasan**  
+Dengan menggunakan fungsi `group_by` lalu melakukan fungsi `summarise` dapat mendapatkan tabel seperti di bawah ini.  
+
+**Screenshot**  
+![5C](https://user-images.githubusercontent.com/70679432/170880179-9bc4c170-1896-4636-92c5-c8e33d4ce524.jpeg)  
+
+### Soal 5D  
+**Deskripsi Soal**  
+Lakukan uji Tukey!  
+
+**Kode Program**  
+```R
+tukeyTest <- TukeyHSD(anova)
+``` 
+**Penjelasan**   
+Proses uji Tukey dapat dilakukan dengan menggunakan fungsi `TukeyHSD`.  
+
+**Screenshot**  
+![5D](https://user-images.githubusercontent.com/70679432/170880267-1b3ec78b-bfb0-4697-b4c5-bec2424d4fb2.jpeg)  
+
+### Soal 5E  
+**Deskripsi Soal**  
+Gunakan compact letter display untuk menunjukkan perbedaan signifikan antara uji Anova dan uji Tukey.  
+
+**Kode Program**  
+```R
+tukeyCLD <- multcompLetters4(anova, tukeyTest)
+``` 
+**Penjelasan**  
+Dengan menggunakan fungsi `multcompLetters4`, dapat terlihat perbedaan antara pengujian Anova dan pengujian Tukey.  
+
+**Screenshot**  
+![5E](https://user-images.githubusercontent.com/70679432/170880387-76e0cfd7-7d41-416d-91d9-b07233e8307a.jpeg)  
