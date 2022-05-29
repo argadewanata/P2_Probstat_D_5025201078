@@ -95,4 +95,33 @@
     ggplot(DataKucingITS, aes(x = Group, y = Length)) + 
            geom_boxplot(fill = "Red", colour = "black")  + 
            scale_x_discrete() + xlab("Group") + ylab("Length")
-   
+    
+    
+# ============================ Soal 5 ===================================
+  library(dplyr)
+  library(readr)
+  library(multcompView)
+  library(ggplot2)
+  
+  # 5A
+    DataGTL <- read_csv("https://drive.google.com/u/0/uc?id=1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ&export=download")
+    qplot(x = Temp, y = Light, geom = "jitter", data = DataGTL) +
+          facet_grid(.~Glass, labeller = label_both)
+    
+  # 5B
+    DataGTL$Glass <- as.factor(DataGTL$Glass)
+    DataGTL$Temp <- as.factor(DataGTL$Temp)
+    
+    anova <- aov(Light ~ Glass*Temp, data = DataGTL)
+    summary(anova)
+  
+  # 5C
+    dataGTL_summary <- group_by(DataGTL, Glass, Temp) %>% summarise(mean=mean(Light), sd=sd(Light)) %>%
+                                arrange(desc(mean))
+  # 5D
+    tukeyTest <- TukeyHSD(anova)
+    tukeyTest
+    
+  # 5E
+    tukeyCLD <- multcompLetters4(anova, tukeyTest)
+    print(tukeyCLD)
