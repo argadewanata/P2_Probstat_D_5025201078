@@ -68,7 +68,7 @@ zsum.test(mean.x = 23500,sigma.x = 3900,n.x = 100,
 ```  
 
 **Penjelasan Kode Program**    
-Untuk menyelesaikan permasalahan ini, dapat digunakan `zsum.test` karena Uji Z dapat digunakan apabila data berdisitribusi normal dan jumlah sampel (n) lebihi dari 30. Penelitian ini menggunakan uji satu arah dengan hipotesis alternatif adalah "mobil rata-rata dikemudikan kurang dari 20.000 kilometer per tahun". Sehingga, digunakan `alternative = less`.  
+Untuk menyelesaikan permasalahan ini, dapat digunakan `zsum.test` karena Uji Z dapat digunakan apabila data berdisitribusi normal dan jumlah sampel (n) lebih dari 30. Penelitian ini menggunakan uji satu arah dengan hipotesis alternatif adalah "mobil rata-rata dikemudikan kurang dari 20.000 kilometer per tahun". Sehingga, digunakan `alternative = less`.  
 
 ### Soal 2A  
 **Deksripsi Soal**  
@@ -96,7 +96,18 @@ Nilai dari P adalah `1`
 P(Z > 8.9744) = 1 - P(Z < 8.977)  
               = 1 - 1  
               = 0  
-Oleh karena itu, Hipotesis awal (H0) bahwa "Mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahun" diterima.   
+Oleh karena itu, Hipotesis awal (H0) bahwa "Mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahun" diterima.  
+
+## SOAL 3  
+Diketahui perusahaan memiliki seorang data analyst ingin memecahkan permasalahan pengambilan keputusan dalam perusahaan tersebut. Selanjutnya
+didapatkanlah data berikut dari perusahaan saham tersebut.  
+Nama Kota/Atribut      | Bandung | Bali
+--------------------   | ------- | --
+Jumlah Saham           | 78      | 100
+Sampel Mean            | 75      | 95
+Sampel Stanar Deviasi  | 67      | 70  
+Dari data diatas, berilah keputusan serta kesimpulan yang didapatkan dari hasil diatas. Asumsikan nilai variancenya sama, apakah ada perbedaan pada rata-ratanya (α= 0.05)?    
+
 
 
 
