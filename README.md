@@ -107,8 +107,87 @@ Jumlah Saham           | 19      | 27
 Sampel Mean            | 3.64    | 2.79
 Sampel Standar Deviasi | 1.67    | 1.32  
   
-Dari data diatas, berilah keputusan serta kesimpulan yang didapatkan dari hasil diatas. Asumsikan nilai variancenya sama, apakah ada perbedaan pada rata-ratanya (α= 0.05)?    
+Dari data diatas, berilah keputusan serta kesimpulan yang didapatkan dari hasil diatas. Asumsikan nilai variancenya sama, apakah ada perbedaan pada rata-ratanya (α= 0.05)?  
 
+### Soal 3A
+**Deksripsi Soal**  
+Buatlah H0 dan H1!  
+
+**Penjelasan**  
+H0 = Rata - rata saham di Bandung sama dengan rata - rata saham di Bali  
+H1 = Rata - rata saham di Bandung tidak sama dengan rata - rata saham di Bali  
+
+### Soal 3B  
+**Deskripsi Soal**  
+Hitunglah sampel statistik!  
+
+**Kode Program**  
+```R
+tsum.test(mean.x=3.64, s.x = 1.67, n.x = 19, mean.y =2.79 , s.y = 1.32, 
+          n.y = 27, alternative = "two.side", var.equal = TRUE)
+```  
+
+**Screenshot**    
+![3B](https://user-images.githubusercontent.com/70679432/170871150-98101c4a-2ded-4071-b2d5-33d82330a5af.jpeg)  
+
+**Penjelasan**  
+Digunakan t test dengan fungsi `tsum.test()` karena jumlah data < 30. Pada pengujian ini, dilakukan secara dua arah(two-sided) dengan menggunakan parameter `alternative = "two.side"` karena yang ingin diujikan adalah rata - rata saham kedua kota tidak sama  
+
+### Soal 3C  
+**Deskripsi Soal**  
+Lakukan uji statistik! (df = 2)  
+
+**Kode Program**  
+```R
+n1 <- 19
+n2 <- 27
+mean1 <- 3.64
+mean2 <- 2.79
+sd1 <- 1.67
+sd2 <- 1.32
+alpha <- 0.05
+df <- 2
+
+t_tabel <- qt(p=alpha/2,df=df,lower.tail = FALSE)
+```  
+
+**Penjelasan**  
+Digunakan pencarian nilai dari t_tabel menggunakan fungsi `qt`. Nilai dari p dilakukan pembagian dua karena akan dilakukan pengujian secara dua arah. Nilai df yang dimasukkan sesuai dengan ketentuan soal, yaitu 2.  
+
+**Screenshot**  
+![3C](https://user-images.githubusercontent.com/70679432/170871493-faa4ea26-dece-4979-afe3-1b4c5540aba7.jpeg)  
+
+### Soal 3D  
+**Deskripsi Soal**  
+Hitunglah nilai kritikal!  
+
+**Kode Program**  
+```R
+ sp <- sqrt(((n1-1)*sd1^2 + (n2-1)*sd2^2)/(df))
+ T_value <- (mean1-mean2)/(sp*sqrt((1/n1)+(1/n2)))
+```  
+
+**Screenshot**  
+![3D](https://user-images.githubusercontent.com/70679432/170871681-46c20890-4777-4b18-a38a-adc3677a8d87.jpeg)  
+
+**Penjelasan**  
+Berikut adalah implementasi dari kedua rumus ini.  
+![3_Formula1](https://user-images.githubusercontent.com/70679432/170872073-8c02eec9-bd3d-4a76-a463-a6f979c45110.jpeg)  
+![3_Formula2](https://user-images.githubusercontent.com/70679432/170872086-93f395bf-af69-42e1-9f2e-1165884c9a9e.jpeg)  
+
+### Soal 3E  
+**Deskripsi Soal**  
+Keputusan  
+
+**Penjelasan**  
+Nilai dari T_value adalah 0.41 yang berarti masih berada di antara t_tabel (-4.303 < T_value < 4.303).  
+
+### Soal 3F  
+**Deskripsi Soal**  
+Kesimpulan  
+
+**Penjelasan**  
+Hipotesis Awal (H0), yaitu "Rata-rata saham di bandung sama dengan rata - rata saham di Bali" diterima  
 
 
 
