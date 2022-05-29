@@ -198,6 +198,95 @@ H0 : Tidak ada perbedaan panjang antara ketiga spesies atau rata-rata panjangnya
 **Deskripsi Soal**  
 Buatlah masing masing jenis spesies menjadi 3 subjek "Grup" (grup 1,grup 2,grup 3). Lalu Gambarkan plot kuantil normal untuk setiap kelompok dan lihat apakah ada outlier utama dalam homogenitas varians.  
 
+**Kode Program**
+```R
+ DataKucingITS <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"),header = TRUE, check.names = TRUE)
+ byGroup <- split(DataKucingITS, DataKucingITS$Group)
+ grup1 <- byGroup$`1`
+ grup2 <- byGroup$`2`
+ grup3 <- byGroup$`3`
+
+ qqnorm(grup1$Length,main = "Grup1")
+ qqnorm(grup2$Length,main = "Grup2")
+ qqnorm(grup3$Length,main = "Grup3")
+```  
+
+**Penjelasan**  
+Data pada link tersebut dibaca dan dimasukkan ke dalam variabel DataKucing ITS. Data tersebut dipisah menjadi grup1,grup2,dan grup3. Setelah dipisah, kita dapat melihat persebaran datanya.  
+
+**Screenshot**  
+![4A_i](https://user-images.githubusercontent.com/70679432/170878827-6e56d1ae-f49a-4f64-b5da-21bcf760a915.jpeg)  
+![4A_ii](https://user-images.githubusercontent.com/70679432/170878835-d3cc62d9-290b-4107-92c6-bfbfab625abb.jpeg)  
+![4A_iii](https://user-images.githubusercontent.com/70679432/170878842-02c96a9d-e9da-4702-a6ce-d390b43a3d31.jpeg)  
+
+### Soal 4B  
+**Deskripsi Soal**  
+Carilah atau periksalah Homogeneity of variances nya , Berapa nilai p yang didapatkan? , Apa hipotesis dan kesimpulan yang dapat diambil?  
+
+**Kode Program**  
+```R
+ bartlett.test(DataKucingITS$Length, DataKucingITS$Group)
+``` 
+
+**Penjelasan**  
+Berdasarkan persebaran pada nomor 4A yang tidak terdapat nilai outlier, maka diputuskan untuk menggunakan `bartlett.test()`.  
+
+**Screenshot**  
+![4B](https://user-images.githubusercontent.com/70679432/170879019-82ec06e0-d43c-47a4-ad5e-695509b27547.jpeg)  
+
+### Soal 4C  
+**Deskripsi Soal**  
+Untuk uji ANOVA (satu arah), buatlah model linier dengan Panjang versus Grup dan beri nama model tersebut model 1.  
+
+**Kode Program**  
+```R
+model1 <- lm(DataKucingITS$Length~DataKucingITS$Group)
+summary(model1)
+```
+
+**Penjelasan**  
+Dibuat sebuah linear model lalu dimasukkan ke dalam variabel model1.  
+
+**Screenshot**  
+![4C](https://user-images.githubusercontent.com/70679432/170879205-9792a9d4-058a-4eb7-8a5f-8ec82c0537be.jpeg)  
+
+### Soal 4D  
+**Deskripsi Soal**  
+Dari Hasil Poin C, Berapakah nilai-p? , Apa yang dapat Anda simpulkan dari H0?  
+
+**Penjelasan**  
+Berdasarkan hasil 4C, didapatkan nilai P adalah `0.6401`. Sehingga, Hipotesis Awal (H0) diterima.  
+
+### Soal 4E
+**Deskripsi Soal**  
+Verifikasilah jawaban model 1 dengan Post-hoc test Tukey HSD, dari nilai p yang didapatkan apakah satu jenis kucing lebih panjang dari yang lain? Jelaskan!
+
+**Kode Program**  
+```R
+av <- aov(Length ~ factor(Group), data = DataKucingITS)
+TukeyHSD(av)
+```  
+
+**Screenshot**  
+![4E](https://user-images.githubusercontent.com/70679432/170879434-2781000b-7920-40a5-9189-7db7455a7126.jpeg)  
+
+### Soal 4F
+**Deskripsi Soal**  
+Visualisasikan data dengan ggplot2!  
+
+**Kode Program**   
+```R
+library(ggplot2)
+ggplot(DataKucingITS, aes(x = Group, y = Length)) + 
+       geom_boxplot(fill = "Red", colour = "black")  + 
+       scale_x_discrete() + xlab("Group") + ylab("Length")
+``` 
+**Penjelasan**  
+Data yang telah didapatkan divisualisasikan dengan bantuan library ggplot2.  
+
+**Screenshot**  
+![4F](https://user-images.githubusercontent.com/70679432/170879550-a074a63e-eb56-47dd-9983-62fa7309752f.jpeg)  
+
 ## SOAL 5  
 Data yang digunakan merupakan hasil eksperimen yang dilakukan untuk mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca pelat muka (A, B dan C) pada keluaran cahaya tabung osiloskop. Percobaan dilakukan sebanyak 27 kali dan didapat data sebagai berikut: https://drive.google.com/file/d/1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ/view.
 
